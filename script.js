@@ -10,15 +10,15 @@ var alunos = [
 ]
 
 var cursos = [
-    {id:1, name: "Java"},
-    {id:2, name: "Angular"},
-    {id:3, name: "SQL"}
+    { id: 1, name: "Java" },
+    { id: 2, name: "Angular" },
+    { id: 3, name: "SQL" }
 ]
 
 var turnos = [
-    {id:1, name: "Manhã"},
-    {id:2, name: "Tarde"},
-    {id:3, name: "Noite"}
+    { id: 1, name: "Manhã" },
+    { id: 2, name: "Tarde" },
+    { id: 3, name: "Noite" }
 ]
 
 
@@ -26,10 +26,10 @@ loadProducts()
 
 function save() {
 
-    
+
 
     var aluno = {
-        id: alunos.length + 1, 
+        id: alunos.length + 1,
         nome: document.getElementById("inputNome").value,
         email: document.getElementById("inputEmail").value,
         telefone: document.getElementById("inputPhone").value,
@@ -40,7 +40,7 @@ function save() {
     addNewRow(aluno)
     alunos.push(aluno)
     document.getElementById("formAlunos").reset()
-    console.log("Saving..."); 
+    console.log("Saving...");
 }
 
 function loadProducts() {
@@ -64,31 +64,36 @@ function addNewRow(aluno) {
     cell.innerHTML = aluno.nome;
 
     cell = newRow.insertCell();
+    cell.className = "d-none d-md-table-cell"
     cell.innerHTML = aluno.email;
 
     cell = newRow.insertCell();
     cell.innerHTML = aluno.telefone;
 
     cell = newRow.insertCell();
-    for(let curso of cursos){
-        if(aluno.curso == curso.id){
+    for (let curso of cursos) {
+        if (aluno.curso == curso.id) {
             cell.innerHTML = curso.name;
         }
-        
+
     };
 
     cell = newRow.insertCell();
-    for(let turno of turnos){
-        if(aluno.turno == turno.id){
+    for (let turno of turnos) {
+        if (aluno.turno == turno.id) {
             cell.innerHTML = turno.name;
-        }  
+        }
     };
 
     
 
- 
 
-    
+
+
+
+
+
+
 
 
 
