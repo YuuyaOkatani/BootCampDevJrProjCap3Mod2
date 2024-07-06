@@ -26,6 +26,14 @@ loadProducts()
 
 function save() {
 
+    var turnosList = document.querySelectorAll('input[name="inputTurno"]')
+    var turnoSet = null
+    for(let turno of turnosList){
+        if(turno.checked){
+            turnoSet = turno.value
+        }
+    }
+
 
 
     var aluno = {
@@ -34,8 +42,9 @@ function save() {
         email: document.getElementById("inputEmail").value,
         telefone: document.getElementById("inputPhone").value,
         curso: document.getElementById("inputCurso").value,
-        turno: document.getElementById("inputTurno").value
+        turno: turnoSet
     }
+    console.log(aluno.turno)
 
     addNewRow(aluno)
     alunos.push(aluno)
@@ -64,13 +73,15 @@ function addNewRow(aluno) {
     cell.innerHTML = aluno.nome;
 
     cell = newRow.insertCell();
-    cell.className = "d-none d-md-table-cell"
+    cell.className = "d-none d-sm-table-cell"
     cell.innerHTML = aluno.email;
 
     cell = newRow.insertCell();
+    cell.className = "d-none d-lg-table-cell"
     cell.innerHTML = aluno.telefone;
 
     cell = newRow.insertCell();
+    cell.className = "d-none d-md-table-cell"
     for (let curso of cursos) {
         if (aluno.curso == curso.id) {
             cell.innerHTML = curso.name;
@@ -79,6 +90,7 @@ function addNewRow(aluno) {
     };
 
     cell = newRow.insertCell();
+    cell.className = "d-none d-md-table-cell"
     for (let turno of turnos) {
         if (aluno.turno == turno.id) {
             cell.innerHTML = turno.name;
