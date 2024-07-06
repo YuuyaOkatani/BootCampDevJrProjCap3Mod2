@@ -9,6 +9,19 @@ var alunos = [
     }
 ]
 
+var cursos = [
+    {id:1, name: "Java"},
+    {id:2, name: "Angular"},
+    {id:3, name: "SQL"}
+]
+
+var turnos = [
+    {id:1, name: "Manhã"},
+    {id:2, name: "Tarde"},
+    {id:3, name: "Noite"}
+]
+
+
 loadProducts()
 
 function save() {
@@ -17,11 +30,11 @@ function save() {
 
     var aluno = {
         id: alunos.length + 1, 
-        nome: document.getElementById("nome").value,
-        email: document.getElementById("email").value,
-        telefone: document.getElementById("telefone").value,
-        curso: document.getElementById("curso").value,
-        turno: document.getElementById("turno").value
+        nome: document.getElementById("inputNome").value,
+        email: document.getElementById("inputEmail").value,
+        telefone: document.getElementById("inputPhone").value,
+        curso: document.getElementById("inputCurso").value,
+        turno: document.getElementById("inputTurno").value
     }
 
     addNewRow(aluno)
@@ -41,10 +54,39 @@ function loadProducts() {
 
 function addNewRow(aluno) {
 
-    var formatter = Intl.NumberFormat('pt-br', {
-        style: 'currency',
-        currency: 'BRL',
-    })
+    var table = document.getElementById("alunosTabela");
+    var newRow = table.insertRow();
+    var idnode = document.createTextNode(aluno.id);
+    var cell = newRow.insertCell();
+    cell.appendChild(idnode);
+
+    cell = newRow.insertCell();
+    cell.innerHTML = aluno.nome;
+
+    cell = newRow.insertCell();
+    cell.innerHTML = aluno.email;
+
+    cell = newRow.insertCell();
+    cell.innerHTML = aluno.telefone;
+
+    cell = newRow.insertCell();
+    for(let curso of cursos){
+        if(aluno.curso == curso.id){
+            cell.innerHTML = curso.name;
+        }
+        
+    };
+
+    cell = newRow.insertCell();
+    for(let turno of turnos){
+        if(aluno.turno == turno.id){
+            cell.innerHTML = turno.name;
+        }  
+    };
+
+ 
+
+    
 
 
 
